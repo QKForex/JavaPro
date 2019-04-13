@@ -1,0 +1,2 @@
+you can interrupt synchronized block
+and you dnot know how long you will wait when you want to execute the synchronized block but the block was monitor

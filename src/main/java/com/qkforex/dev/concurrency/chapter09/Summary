@@ -1,0 +1,67 @@
+类的加载过程分三步
+1 加载阶段:主要负责查找并且加载类的二进制文件，其实就是class文件
+
+2 连接阶段: 连接阶段做的工作比较多，细分的话还可以分为三个阶段
+>  验证：主要是确保类的文件的正确性，比如class的版本，class文件的魔术因子是否正 确
+>  准备：为类的静态变量分配内存，并且为其初始化默认值
+>  解析：把类中的符号引用转换为直接引用
+
+3 初始化阶段: 为类的静态变量赋予正确的初始值
+
+
+JVM 虚拟机规范了 每个类或者接口被java程序首次主动使用时才会对其进行初始化
+JVM 规范了以下6中   主动  使用类的场景
+1>通过new 关键字对类进行初始化
+2>访问类的静态成员
+public class simple
+{
+      static
+      {
+         system.out.println("I will be initialize");
+      }
+      public static int x=10;
+}
+这段代码中X 是静态变量 其它类即使不对Simple进行new 创 建 直接访问变量X 也会对Simple进行初始化
+3>访问类的静态方法
+4>对某个类进行反射操作会对这个类进行初始化
+
+public static void main(String[] args) throws ClassNotFoundException
+{
+   Class.forName("jdbc.mysql.");
+}
+5>初始化类的子类会导致类初始化,需要注意的是 通过子类访问父类的静态成员只会导致父类被初始化
+public class Parent{
+static{
+out("Parent is initialize ")
+}
+public static int y=10;
+}
+
+public class Child extends Parent{
+   static
+   {
+   out("Child is initialize ");
+   }
+   public static int x=100;
+
+}
+
+public class ActiveLoadTest
+{
+psvm{
+sout(Child.x);//sout(Child.y)
+}
+}
+
+6> 启动类，就是执行main函数所在的类会导致该类的初始化
+
+被动使用类的情况
+
+1>构造某个类的数组时不会导致该类的初始化
+Simple[] simples=new Simple[10];
+只是在内存中开 辟了一段连续的空间
+2>引用类的静态  常量  不会导致类的初始化
+  但是如果静态常量引用是个复杂的计算逻辑的话 也会导致类 的初始化
+
+
+

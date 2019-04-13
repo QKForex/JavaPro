@@ -1,0 +1,10 @@
+1 线程的interrupted 状态在catch中被捕获之后会被擦出
+2 线程的isinterrupted方法不会擦出interrupted标志
+3 Thread.interrupted 方法用户判断当前线程的状态，并且会立即擦出中断标志
+4 isinterrupted and Thread.interrupted call native isinterrupted with a parameter (boolean ClearInterrupted);
+  isinterrupted(false) interrupted(true)
+5 join 某个线程A，会使当前线程进入等待(LOCKED)，知道A结束生命周期
+6 Thread priority inherit his parent Thread default
+7 using boolean volatile variable to control loop then change the variable to false ,to closed the thread
+8 using stop to stop a thread maybe cant release montior lock
+

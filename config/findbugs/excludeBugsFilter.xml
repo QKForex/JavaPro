@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<FindBugsFilter>
+    <Match>
+        <Bug code="EI,EI2" />
+    </Match>
+    <Match>
+        <Package name="~test\..*"/>
+    </Match>
+    <Match>
+        <Class name="~.*Test$"/>
+    </Match>
+</FindBugsFilter>
