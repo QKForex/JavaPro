@@ -2,6 +2,7 @@ package com.qkforex.dev;
 
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
+
 import java.lang.reflect.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,20 +11,7 @@ import java.util.List;
 @Slf4j
 @Value
 //@RequiredArgsConstructor(staticName = "of")
-public class
-
-
-
-
-
-
-
-
-
-
-
-
-LomBockTest {
+public class LomBockTest {
 
     @Getter
     @Setter
@@ -36,7 +24,8 @@ LomBockTest {
         }
         return methods;
     }
-    public List<Constructor> getAllConstructors(){
+
+    public List<Constructor> getAllConstructors() {
         List<Constructor> methods = new ArrayList<Constructor>();
         for (Constructor method : this.getClass().getConstructors()) {
             methods.add(method);
@@ -49,8 +38,8 @@ LomBockTest {
 
         //LomBockTest lb =new LomBockTest("haha");
         //LomBockTest lb =LomBockTest.of("haha");
-        LomBockTest lb=new LomBockTest("hha");
-       // lb.setName("FrankSang");
+        LomBockTest lb = new LomBockTest("hha");
+        // lb.setName("FrankSang");
         System.out.println(lb.getName());
         log.info("this is my first SLF4J");
        /* List<Method> methods=lb.getAllMethods();
@@ -60,15 +49,13 @@ LomBockTest {
 //            System.out.println(method.get());
         }*/
 
-        List<Constructor> constructors=lb.getAllConstructors();
-        for(Constructor constructor:constructors)
-        {
+        List<Constructor> constructors = lb.getAllConstructors();
+        for (Constructor constructor : constructors) {
             System.out.println(constructor.getName());
             try {
-                LomBockTest llb= (LomBockTest) constructor.newInstance("haha");
+                LomBockTest llb = (LomBockTest) constructor.newInstance("haha");
                 System.out.println(llb.getName());
-            }catch(Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
